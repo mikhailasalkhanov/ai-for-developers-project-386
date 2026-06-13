@@ -56,7 +56,7 @@ function handleSave() {
     nameError.value = 'Name is required'
     valid = false
   }
-  if (durationMinutes.value <= 0) {
+  if (isNaN(durationMinutes.value) || durationMinutes.value <= 0) {
     durationError.value = 'Duration must be greater than 0'
     valid = false
   }
