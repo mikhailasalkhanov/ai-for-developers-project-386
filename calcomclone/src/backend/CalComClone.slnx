@@ -1,3 +1,6 @@
 <Solution>
-  <Project Path="CalComClone/CalComClone.csproj" />
+  <Project Path="CalComClone.Core/CalComClone.Core.csproj" />
+  <Project Path="CalComClone.Infrastructure/CalComClone.Infrastructure.csproj" />
+  <Project Path="CalComClone.UseCases/CalComClone.UseCases.csproj" />
+  <Project Path="CalComClone.WebApi/CalComClone.WebApi.csproj" />
 </Solution>
