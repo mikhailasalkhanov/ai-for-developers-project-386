@@ -16,8 +16,8 @@ model ApiError {
 // ---------- Owner Settings ----------
 
 model TimeOfDay {
-  hour: int32;
-  minute: int32;
+  @minValue(0) @maxValue(23) hour: int32;
+  @minValue(0) @maxValue(59) minute: int32;
 }
 
 model DaySchedule {
@@ -45,19 +45,19 @@ model EventType {
   id: string;
   name: string;
   description: string;
-  durationMinutes: int32;
+  @minValue(1) @maxValue(1440) durationMinutes: int32;
 }
 
 model EventTypeCreate {
   name: string;
   description: string;
-  durationMinutes: int32;
+  @minValue(1) @maxValue(1440) durationMinutes: int32;
 }
 
 model EventTypeUpdate {
   name?: string;
   description?: string;
-  durationMinutes?: int32;
+  @minValue(1) @maxValue(1440) durationMinutes?: int32;
 }
 
 // ---------- Slot ----------

@@ -123,11 +123,12 @@ async function handleSave() {
           <Checkbox
             :id="`day-${key}`"
             :model-value="(days[key] as { isWorking: boolean }).isWorking"
-            @update:model-value="
-              (v: boolean) => {
-                ;(days[key] as { isWorking: boolean }).isWorking = v
-              }
-            "
+              @update:model-value="
+                (v: boolean | 'indeterminate') => {
+                  if (typeof v === 'boolean')
+                    (days[key] as { isWorking: boolean }).isWorking = v
+                }
+              "
           />
           <Label :for="`day-${key}`" class="font-medium">{{ dayLabels[key] }}</Label>
         </div>
@@ -136,7 +137,7 @@ async function handleSave() {
             <Input
               :model-value="String((days[key] as { startH: number }).startH)"
               @update:model-value="
-                (v: string) => {
+                (v: string | number) => {
                   const n = Number(v)
                   if (!isNaN(n)) (days[key] as { startH: number }).startH = n
                 }
@@ -150,7 +151,7 @@ async function handleSave() {
             <Input
               :model-value="String((days[key] as { startM: number }).startM)"
               @update:model-value="
-                (v: string) => {
+                (v: string | number) => {
                   const n = Number(v)
                   if (!isNaN(n)) (days[key] as { startM: number }).startM = n
                 }
@@ -164,7 +165,7 @@ async function handleSave() {
             <Input
               :model-value="String((days[key] as { endH: number }).endH)"
               @update:model-value="
-                (v: string) => {
+                (v: string | number) => {
                   const n = Number(v)
                   if (!isNaN(n)) (days[key] as { endH: number }).endH = n
                 }
@@ -178,7 +179,7 @@ async function handleSave() {
             <Input
               :model-value="String((days[key] as { endM: number }).endM)"
               @update:model-value="
-                (v: string) => {
+                (v: string | number) => {
                   const n = Number(v)
                   if (!isNaN(n)) (days[key] as { endM: number }).endM = n
                 }
