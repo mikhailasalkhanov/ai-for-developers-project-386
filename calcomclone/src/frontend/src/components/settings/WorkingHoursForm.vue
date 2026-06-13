@@ -7,6 +7,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Skeleton } from '@/components/ui/skeleton'
+import TimezoneSelect from './TimezoneSelect.vue'
 
 const store = useSettingsStore()
 
@@ -108,8 +109,8 @@ async function handleSave() {
     </div>
 
     <div class="grid gap-2 max-w-xs">
-      <Label for="timezone">Timezone</Label>
-      <Input id="timezone" v-model="timezone.value" placeholder="UTC" />
+      <Label>Timezone</Label>
+      <TimezoneSelect v-model="timezone.value" />
     </div>
 
     <div class="space-y-3">
