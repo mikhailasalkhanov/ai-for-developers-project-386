@@ -42,7 +42,7 @@ model OwnerSettings {
 // ---------- Event Type ----------
 
 model EventType {
-  id: string;
+  @format("uuid") id: string;
   name: string;
   description: string;
   @minValue(1) @maxValue(1440) durationMinutes: int32;
@@ -74,8 +74,8 @@ model GuestInfo {
 }
 
 model Booking {
-  id: string;
-  eventTypeId: string;
+  @format("uuid") id: string;
+  @format("uuid") eventTypeId: string;
   eventTypeName: string;
   startTime: utcDateTime;
   endTime: utcDateTime;

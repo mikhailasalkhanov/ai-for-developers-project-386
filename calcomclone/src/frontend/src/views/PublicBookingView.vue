@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import type { Slot, EventType } from '@/api/types'
 import { useSlotStore } from '@/stores/slots'
+import { useSettingsStore } from '@/stores/settings'
 import { getPublicEventType } from '@/api/event-types'
 import { formatDateTime } from '@/lib/datetime'
 import { Badge } from '@/components/ui/badge'
@@ -13,6 +14,7 @@ import GuestBookingForm from '@/components/slots/GuestBookingForm.vue'
 const route = useRoute()
 const eventTypeId = route.params.eventTypeId as string
 const slotStore = useSlotStore()
+const settingsStore = useSettingsStore()
 
 const eventType = ref<EventType | null>(null)
 const eventTypeLoading = ref(true)
@@ -31,7 +33,7 @@ onMounted(async () => {
   } finally {
     eventTypeLoading.value = false
   }
-  await slotStore.fetch(eventTypeId)
+  await Promise.all([slotStore.fetch(eventTypeId), settingsStore.fetch()])
 })
 
 async function handleBook(guestName: string) {
@@ -88,6 +90,7 @@ async function handleBook(guestName: string) {
           v-model="selectedSlot"
           :slots="slotStore.slots"
           :loading="slotStore.loading && !bookingSuccess"
+          :working-days="settingsStore.settings.workingHours"
         />
       </div>
       <div>
