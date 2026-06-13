@@ -57,17 +57,17 @@ async function handleBook(guestName: string) {
 
 <template>
   <div class="space-y-6">
-    <div v-if="eventTypeLoading" class="space-y-2">
+    <div v-if="eventTypeLoading" class="space-y-2 max-w-[900px] mx-auto">
       <Skeleton class="h-8 w-64" />
       <Skeleton class="h-4 w-96" />
       <Skeleton class="h-5 w-20" />
     </div>
 
-    <div v-else-if="eventTypeError" class="rounded-md bg-destructive/10 p-4 text-destructive">
+    <div v-else-if="eventTypeError" class="rounded-md bg-destructive/10 p-4 text-destructive max-w-[900px] mx-auto">
       {{ eventTypeError }}
     </div>
 
-    <div v-else-if="eventType" class="space-y-2">
+    <div v-else-if="eventType" class="space-y-2 max-w-[900px] mx-auto">
       <h1 class="text-3xl font-bold tracking-tight">{{ eventType.name }}</h1>
       <p class="text-muted-foreground">{{ eventType.description }}</p>
       <Badge variant="secondary">{{ eventType.durationMinutes }} min</Badge>
@@ -84,7 +84,7 @@ async function handleBook(guestName: string) {
       {{ bookError }}
     </div>
 
-    <div class="grid gap-6 lg:grid-cols-3">
+    <div class="grid gap-6 lg:grid-cols-3 lg:max-w-[900px] mx-auto">
       <div class="lg:col-span-2">
         <SlotCalendar
           v-model="selectedSlot"
