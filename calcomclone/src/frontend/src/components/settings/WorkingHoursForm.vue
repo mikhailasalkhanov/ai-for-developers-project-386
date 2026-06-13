@@ -137,7 +137,8 @@ async function handleSave() {
               :model-value="String((days[key] as { startH: number }).startH)"
               @update:model-value="
                 (v: string) => {
-                  ;(days[key] as { startH: number }).startH = Number(v)
+                  const n = Number(v)
+                  if (!isNaN(n)) (days[key] as { startH: number }).startH = n
                 }
               "
               type="number"
@@ -150,7 +151,8 @@ async function handleSave() {
               :model-value="String((days[key] as { startM: number }).startM)"
               @update:model-value="
                 (v: string) => {
-                  ;(days[key] as { startM: number }).startM = Number(v)
+                  const n = Number(v)
+                  if (!isNaN(n)) (days[key] as { startM: number }).startM = n
                 }
               "
               type="number"
@@ -163,7 +165,8 @@ async function handleSave() {
               :model-value="String((days[key] as { endH: number }).endH)"
               @update:model-value="
                 (v: string) => {
-                  ;(days[key] as { endH: number }).endH = Number(v)
+                  const n = Number(v)
+                  if (!isNaN(n)) (days[key] as { endH: number }).endH = n
                 }
               "
               type="number"
@@ -176,7 +179,8 @@ async function handleSave() {
               :model-value="String((days[key] as { endM: number }).endM)"
               @update:model-value="
                 (v: string) => {
-                  ;(days[key] as { endM: number }).endM = Number(v)
+                  const n = Number(v)
+                  if (!isNaN(n)) (days[key] as { endM: number }).endM = n
                 }
               "
               type="number"

@@ -20,5 +20,7 @@
     "lib": "@/lib",
     "composables": "@/composables"
   },
-  "registries": {}
+  "registries": {
+    "@acme": "https://acme.com/r/{name}.json"
+  }
 }
