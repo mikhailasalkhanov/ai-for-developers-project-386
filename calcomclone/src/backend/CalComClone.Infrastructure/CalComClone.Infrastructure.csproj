@@ -11,4 +11,8 @@
       <Folder Include="Repositories\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\CalComClone.Core\CalComClone.Core.csproj" />
+    </ItemGroup>
+
 </Project>

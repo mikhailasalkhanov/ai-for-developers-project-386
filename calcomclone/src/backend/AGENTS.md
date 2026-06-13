@@ -16,11 +16,11 @@ All commands assume you are in `calcomclone/src/backend/`.
 |---|---|
 | `CalComClone.Core` | Domain layer — models and interfaces (no dependencies) |
 | `CalComClone.UseCases` | Application layer — use cases / service logic |
-| `CalComClone.Infrastructure` | Adapter layer — DTOs, repositories, external integrations |
-| `CalComClone.WebApi` | Entry point — controllers, responses, DI wiring, `Program.cs` |
+| `CalComClone.Infrastructure` | Adapter layer — repositories, data access DTOs, external integrations |
+| `CalComClone.WebApi` | Entry point — controllers, HTTP request/response DTOs, DI wiring, `Program.cs` |
 
 Dependency direction: WebApi → UseCases → Core, and WebApi → Infrastructure → Core.
-No project references between layers are wired yet — still a scaffold.
+All project references are wired. In-memory repositories are registered as singletons.
 
 ## Commands
 
@@ -40,14 +40,16 @@ npx tsp compile .
 
 ## Key files
 
-- `CalComClone.WebApi/Program.cs` — startup, DI, middleware, endpoint mapping.
+- `CalComClone.WebApi/Program.cs` — startup, DI, middleware, `AddControllers`.
+- `CalComClone.WebApi/Controllers/` — HTTP controllers mapped to the TypeSpec contract.
+- `CalComClone.WebApi/Responses/` — HTTP request/response DTOs and error models.
 - `CalComClone.WebApi/CalComClone.http` — REST client file for manual smoke tests (base URL: `http://localhost:5094`).
 - `CalComClone.WebApi/Properties/launchSettings.json` — launch profiles.
 - `CalComClone.slnx` — solution file; add new projects here.
 - `CalComClone.Core/Interfaces/` — domain contracts (repositories, services).
 - `CalComClone.Core/Models/` — domain entities.
 - `CalComClone.Infrastructure/Repositories/` — data access implementations.
-- `CalComClone.Infrastructure/Dto/` — request/response shapes.
+- `CalComClone.Infrastructure/Dto/` — data access DTOs (internal to infrastructure).
 
 ## API design workflow
 
@@ -56,8 +58,6 @@ npx tsp compile .
 3. Implement endpoints in WebApi controllers, wire through UseCases and Infrastructure.
 4. Use `CalComClone.http` to smoke-test endpoints manually.
 
-The current `Program.cs` has a sample `/weatherforecast` endpoint that should be replaced with real endpoints matching the TypeSpec contract (admin settings, event types, bookings, public event types/slots/bookings).
-
 ## Scaffold status
 
-All four projects are empty scaffolds. The `Controllers/`, `Responses/`, `Interfaces/`, `Models/`, `Dtos/`, and `Repositories/` directories are created but contain no source files. No database or ORM is configured. Begin by implementing Core interfaces and models, then work outward.
+All layers are implemented end-to-end with in-memory storage. 3 repository implementations (InMemoryOwnerSettingsRepository, InMemoryEventTypeRepository with seed data, InMemoryBookingRepository) and 4 use cases (OwnerSettingsService, EventTypeService, BookingService, SlotService). All wired via DI in Program.cs. The app runs and all endpoints return real data. No database or ORM is configured.

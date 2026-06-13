@@ -16,4 +16,10 @@
       <Folder Include="Responses\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\CalComClone.Core\CalComClone.Core.csproj" />
+      <ProjectReference Include="..\CalComClone.UseCases\CalComClone.UseCases.csproj" />
+      <ProjectReference Include="..\CalComClone.Infrastructure\CalComClone.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>
