@@ -21,7 +21,7 @@ public class PublicBookingsController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Booking>> Create([FromBody] BookingCreateRequest body)
     {
-        var created = await _service.CreateAsync(body.EventTypeId, body.StartTime, body.GuestName);
+        var created = await _service.CreateAsync(body.EventTypeId, body.StartTime, body.Guest.Name);
         if (created is null)
             return BadRequest(new ApiErrorResponse { Code = 400, Message = "Event type not found" });
 

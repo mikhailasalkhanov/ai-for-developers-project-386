@@ -7,7 +7,8 @@ public class BookingCreateRequestValidator : AbstractValidator<BookingCreateRequ
     public BookingCreateRequestValidator()
     {
         RuleFor(x => x.EventTypeId).NotEmpty();
-        RuleFor(x => x.GuestName).NotEmpty().MaximumLength(200);
+        RuleFor(x => x.Guest).NotNull();
+        RuleFor(x => x.Guest.Name).NotEmpty().MaximumLength(200);
         RuleFor(x => x.StartTime)
             .NotEqual(default(DateTime))
             .Must(startTime => startTime > DateTime.UtcNow)
