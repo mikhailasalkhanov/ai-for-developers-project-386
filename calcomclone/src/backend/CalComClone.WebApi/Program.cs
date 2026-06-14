@@ -12,14 +12,24 @@ builder.Services.AddSingleton<IOwnerSettingsRepository, InMemoryOwnerSettingsRep
 builder.Services.AddSingleton<IEventTypeRepository, InMemoryEventTypeRepository>();
 builder.Services.AddSingleton<IBookingRepository, InMemoryBookingRepository>();
 
-builder.Services.AddSingleton<OwnerSettingsService>();
-builder.Services.AddSingleton<EventTypeService>();
-builder.Services.AddSingleton<BookingService>();
-builder.Services.AddSingleton<ISlotService, SlotService>();
+builder.Services.AddScoped<OwnerSettingsService>();
+builder.Services.AddScoped<EventTypeService>();
+builder.Services.AddScoped<BookingService>();
+builder.Services.AddScoped<ISlotService, SlotService>();
 
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 builder.Services.AddValidatorsFromAssemblyContaining<OwnerSettingsService>();
 builder.Services.AddFluentValidationAutoValidation();
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:5173")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 
 builder.Services.AddControllers(options =>
     {
@@ -40,6 +50,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.UseCors();
 app.UseHttpsRedirection();
 app.MapControllers();
 app.Run();
