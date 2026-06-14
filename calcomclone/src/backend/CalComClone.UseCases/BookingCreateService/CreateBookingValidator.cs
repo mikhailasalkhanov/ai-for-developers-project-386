@@ -33,7 +33,7 @@ public class CreateBookingValidator : AbstractValidator<CreateBookingInput>
         if (input.OwnerSettings is null)
             return false;
 
-        var schedule = input.OwnerSettings.GetDaySchedule(startTime.DayOfWeek);
+        var schedule = input.OwnerSettings.WorkingHours.GetDaySchedule(startTime.DayOfWeek);
         if (schedule is null || !schedule.IsWorking)
             return false;
 

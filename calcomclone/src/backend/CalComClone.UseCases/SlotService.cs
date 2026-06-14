@@ -38,7 +38,7 @@ public class SlotService : ISlotService
             if (settings is null)
                 continue;
 
-            var schedule = settings.GetDaySchedule(date.DayOfWeek);
+            var schedule = settings.WorkingHours.GetDaySchedule(date.DayOfWeek);
             if (schedule is null || !schedule.IsWorking)
                 continue;
 

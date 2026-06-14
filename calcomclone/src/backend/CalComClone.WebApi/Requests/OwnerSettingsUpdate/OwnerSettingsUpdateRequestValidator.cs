@@ -1,3 +1,4 @@
+using CalComClone.Core.Models;
 using CalComClone.Requests.Shared;
 using FluentValidation;
 
@@ -9,6 +10,14 @@ public class OwnerSettingsUpdateRequestValidator : AbstractValidator<OwnerSettin
     {
         RuleFor(x => x.Timezone).NotEmpty();
 
+        RuleFor(x => x.WorkingHours).NotNull().SetValidator(new WorkingHoursRequestValidator());
+    }
+}
+
+internal class WorkingHoursRequestValidator : AbstractValidator<WorkingHours>
+{
+    public WorkingHoursRequestValidator()
+    {
         RuleFor(x => x.Monday).SetValidator(new DayScheduleValidator());
         RuleFor(x => x.Tuesday).SetValidator(new DayScheduleValidator());
         RuleFor(x => x.Wednesday).SetValidator(new DayScheduleValidator());

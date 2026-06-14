@@ -34,13 +34,7 @@ public class AdminSettingsController : ControllerBase
         var settings = new OwnerSettings
         {
             Timezone = body.Timezone,
-            Monday = body.Monday,
-            Tuesday = body.Tuesday,
-            Wednesday = body.Wednesday,
-            Thursday = body.Thursday,
-            Friday = body.Friday,
-            Saturday = body.Saturday,
-            Sunday = body.Sunday,
+            WorkingHours = body.WorkingHours,
         };
         await _service.SaveAsync(settings);
         return Ok(settings);

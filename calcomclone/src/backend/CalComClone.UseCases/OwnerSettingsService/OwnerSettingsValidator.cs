@@ -9,6 +9,14 @@ public class OwnerSettingsValidator : AbstractValidator<OwnerSettings>
     {
         RuleFor(x => x.Timezone).NotEmpty();
 
+        RuleFor(x => x.WorkingHours).NotNull().SetValidator(new WorkingHoursBusinessValidator());
+    }
+}
+
+internal class WorkingHoursBusinessValidator : AbstractValidator<WorkingHours>
+{
+    public WorkingHoursBusinessValidator()
+    {
         RuleFor(x => x.Monday).SetValidator(new DayScheduleBusinessValidator());
         RuleFor(x => x.Tuesday).SetValidator(new DayScheduleBusinessValidator());
         RuleFor(x => x.Wednesday).SetValidator(new DayScheduleBusinessValidator());
