@@ -1,6 +1,6 @@
 using CalComClone.Core.Models;
 
-namespace CalComClone.Responses;
+namespace CalComClone.Requests.OwnerSettingsUpdate;
 
 public class OwnerSettingsUpdateRequest
 {

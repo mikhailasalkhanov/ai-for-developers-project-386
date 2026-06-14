@@ -1,5 +1,8 @@
 using CalComClone.Core.Models;
-using CalComClone.Responses;
+using CalComClone.Requests;
+using CalComClone.Requests.EventTypeCreate;
+using CalComClone.Requests.EventTypeUpdate;
+using CalComClone.Requests.Shared;
 using CalComClone.UseCases;
 using Microsoft.AspNetCore.Mvc;
 

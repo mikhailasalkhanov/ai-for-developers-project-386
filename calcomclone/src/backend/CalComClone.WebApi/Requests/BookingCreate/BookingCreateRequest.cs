@@ -1,4 +1,4 @@
-namespace CalComClone.Responses;
+namespace CalComClone.Requests.BookingCreate;
 
 public class BookingCreateRequest
 {

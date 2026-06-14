@@ -1,6 +1,9 @@
 using CalComClone.Core.Models;
-using CalComClone.Responses;
+using CalComClone.Requests;
+using CalComClone.Requests.OwnerSettingsUpdate;
+using CalComClone.Requests.Shared;
 using CalComClone.UseCases;
+using CalComClone.UseCases.OwnerSettingsService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CalComClone.Controllers;

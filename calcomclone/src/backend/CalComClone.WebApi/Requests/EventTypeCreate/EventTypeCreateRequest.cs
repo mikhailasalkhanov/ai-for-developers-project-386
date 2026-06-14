@@ -1,4 +1,4 @@
-namespace CalComClone.Responses;
+namespace CalComClone.Requests.EventTypeCreate;
 
 public class EventTypeCreateRequest
 {

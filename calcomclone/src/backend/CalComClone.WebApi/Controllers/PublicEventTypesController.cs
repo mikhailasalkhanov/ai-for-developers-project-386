@@ -1,6 +1,7 @@
 using CalComClone.Core.Interfaces;
 using CalComClone.Core.Models;
-using CalComClone.Responses;
+using CalComClone.Requests;
+using CalComClone.Requests.Shared;
 using CalComClone.UseCases;
 using Microsoft.AspNetCore.Mvc;
 

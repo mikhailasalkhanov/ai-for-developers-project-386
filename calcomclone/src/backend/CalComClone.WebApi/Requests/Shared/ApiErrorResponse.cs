@@ -1,4 +1,4 @@
-namespace CalComClone.Responses;
+namespace CalComClone.Requests.Shared;
 
 public class ApiErrorResponse
 {
