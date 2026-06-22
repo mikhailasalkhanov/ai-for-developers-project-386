@@ -138,7 +138,7 @@ test.describe('Admin Event Types CRUD', () => {
     await page.goto('/admin/event-types')
 
     // 3. Verify the event type is visible in the table
-    await expect(page.getByRole('cell', { name: 'Quick Chat' })).toBeVisible()
+    await expect(page.getByRole('cell', { name: 'Quick Chat', exact: true })).toBeVisible()
 
     // 4. Click Delete button to open confirmation dialog
     await page.getByRole('button', { name: 'Delete' }).click()
@@ -151,7 +151,7 @@ test.describe('Admin Event Types CRUD', () => {
     await page.getByRole('dialog').getByRole('button', { name: 'Cancel' }).click()
 
     // 7. Verify the event type is still visible (not deleted)
-    await expect(page.getByRole('cell', { name: 'Quick Chat' })).toBeVisible()
+    await expect(page.getByRole('cell', { name: 'Quick Chat', exact: true })).toBeVisible()
 
     // 8. Click Delete again to reopen the dialog
     await page.getByRole('button', { name: 'Delete' }).click()

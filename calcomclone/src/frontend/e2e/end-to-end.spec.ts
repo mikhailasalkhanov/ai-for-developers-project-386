@@ -94,7 +94,7 @@ test.describe('End-to-End', () => {
         url.origin === API_BASE &&
         url.pathname === '/public/event-types/et-existing/slots',
       async (route) => {
-        const slots = makeSlots(3, 1, 10, 0, 30)
+        const slots = makeSlots(3, 0, 10, 0, 30)
         await route.fulfill({
           status: 200,
           contentType: 'application/json',
@@ -169,7 +169,7 @@ test.describe('End-to-End', () => {
     await page.getByRole('button', { name: 'Save' }).click()
 
     // Wait for the dialog to close and verify the new type appears in the table
-    await expect(page.getByRole('cell', { name: 'Demo Call' })).toBeVisible()
+    await expect(page.getByRole('cell', { name: 'Demo Call', exact: true })).toBeVisible()
 
     // ================================================================
     // STEP 2: Guest navigates to booking page
@@ -189,7 +189,7 @@ test.describe('End-to-End', () => {
     await expect(page.locator('h1')).toHaveText('Existing Type')
 
     // Select the first available time slot button
-    await page.getByRole('button', { name: '10:00' }).click()
+    await page.getByRole('button', { name: /\d{1,2}:\d{2}/ }).first().click()
 
     // Fill in the guest name
     await page.locator('#guest-name').fill('Alice')

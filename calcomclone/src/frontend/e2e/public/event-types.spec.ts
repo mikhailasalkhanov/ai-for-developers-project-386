@@ -23,9 +23,9 @@ test.describe('Public Event Types', () => {
     const bookLinks = page.getByRole('link', { name: 'Book' })
     await expect(bookLinks).toHaveCount(3)
 
-    await expect(page.getByText('Quick Chat')).toBeVisible()
-    await expect(page.getByText('Long Meeting')).toBeVisible()
-    await expect(page.getByText('Consultation')).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Quick Chat' })).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Long Meeting' })).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Consultation' })).toBeVisible()
   })
 
   test('shows empty state when no event types', async ({ page }) => {

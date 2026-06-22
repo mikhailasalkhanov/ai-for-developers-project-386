@@ -45,7 +45,7 @@ test.describe('Admin Dashboard', () => {
     await page.goto('/admin')
 
     // 3. Click the Event Types card
-    await page.getByText('Event Types').first().click()
+    await page.locator('a[href="/admin/event-types"]').click()
 
     // 4. Verify URL navigated to event types page
     await expect(page).toHaveURL('/admin/event-types')
@@ -61,7 +61,7 @@ test.describe('Admin Dashboard', () => {
     await page.goto('/admin')
 
     // 3. Click the Upcoming Bookings card
-    await page.getByText('Upcoming Bookings').first().click()
+    await page.locator('a[href="/admin/bookings"]').click()
 
     // 4. Verify URL navigated to bookings page
     await expect(page).toHaveURL('/admin/bookings')

@@ -10,7 +10,7 @@ test.describe('Public Booking', () => {
     description: 'A half-hour chat',
     durationMinutes: 30,
   }
-  const slots = makeSlots(4, 1, 10, 0, 30)
+  const slots = makeSlots(4, 0, 10, 0, 30)
   const settings = makeSettings()
 
   test.beforeEach(() => {
@@ -31,10 +31,10 @@ test.describe('Public Booking', () => {
     await expect(page.getByText('A half-hour chat')).toBeVisible()
 
     // Assert: badge "30 min" is visible
-    await expect(page.getByText('30 min')).toBeVisible()
+    await expect(page.getByText('30 min', { exact: true })).toBeVisible()
 
     // Assert: calendar component is visible
-    await expect(page.locator('.rounded-md.border')).toBeVisible()
+    await expect(page.locator('.rounded-md.border').first()).toBeVisible()
 
     // Assert: heading "Confirm your booking" is visible
     await expect(page.getByRole('heading', { name: 'Confirm your booking' })).toBeVisible()
@@ -158,7 +158,7 @@ test.describe('Public Booking', () => {
     await page.goto('/book/et-1')
 
     // Assert: calendar renders and "No available slots for this day." is visible
-    await expect(page.locator('.rounded-md.border')).toBeVisible()
+    await expect(page.locator('.rounded-md.border').first()).toBeVisible()
     await expect(page.getByText('No available slots for this day.')).toBeVisible()
   })
 })
