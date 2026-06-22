@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { Button } from '@/components/ui/button'
 
 const route = useRoute()
-const isAdmin = route.path.startsWith('/admin')
+const isAdmin = computed(() => route.path.startsWith('/admin'))
 </script>
 
 <template>
