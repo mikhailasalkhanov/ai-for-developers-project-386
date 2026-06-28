@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/mikhailasalkhanov/ai-for-developers-project-386/compare/v1.1.0...v1.1.1) (2026-06-28)
+
+
+### Bug Fixes
+
+* **docker:** update COPY paths to match repo-root build context ([11e0b23](https://github.com/mikhailasalkhanov/ai-for-developers-project-386/commit/11e0b23e401f044818f472e4cf670557503265e4))
+
 ## [1.1.0](https://github.com/mikhailasalkhanov/ai-for-developers-project-386/compare/v1.0.0...v1.1.0) (2026-06-28)
 
 
