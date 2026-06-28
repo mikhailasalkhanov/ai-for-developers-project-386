@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/mikhailasalkhanov/ai-for-developers-project-386/compare/v1.0.0...v1.1.0) (2026-06-28)
+
+
+### Features
+
+* **docker:** add Dockerfile for single-container build ([ef2ae8f](https://github.com/mikhailasalkhanov/ai-for-developers-project-386/commit/ef2ae8f7fda8462a8e06ce0078b001fd5d3ae81f))
+* **docker:** add Dockerfile for single-container build ([65d9f89](https://github.com/mikhailasalkhanov/ai-for-developers-project-386/commit/65d9f89f380ae8c953f561be559a9cf95a6bac94))
+
 ## 1.0.0 (2026-06-22)
 
 
