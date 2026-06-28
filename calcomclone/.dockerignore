@@ -1,0 +1,13 @@
+**/node_modules/
+**/dist/
+**/bin/
+**/obj/
+**/.git/
+**/.idea/
+**/.vscode/
+**/tsp-output/
+**/.env
+**/.env.*
+**/coverage/
+**/test-results/
+**/playwright-report/
