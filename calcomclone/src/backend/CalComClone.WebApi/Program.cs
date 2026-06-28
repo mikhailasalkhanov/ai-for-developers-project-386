@@ -6,7 +6,10 @@ using CalComClone.UseCases.OwnerSettingsService;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.UseUrls($"http://+:{port}");
 
 builder.Services.AddSingleton<IOwnerSettingsRepository, InMemoryOwnerSettingsRepository>();
 builder.Services.AddSingleton<IEventTypeRepository, InMemoryEventTypeRepository>();
@@ -51,6 +54,14 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors();
-app.UseHttpsRedirection();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
+
+app.UseDefaultFiles();
+app.UseStaticFiles();
 app.MapControllers();
+app.MapFallbackToFile("index.html");
 app.Run();
